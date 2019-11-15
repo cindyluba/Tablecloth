@@ -12,32 +12,27 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_fridge"
         android:name="edu.ucsb.cs.cs184.tablecloth.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:label="@string/menu_fridge"
+        tools:layout="@layout/fragment_fridge" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_recipes"
         android:name="edu.ucsb.cs.cs184.tablecloth.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:label="@string/menu_recipes"
+        tools:layout="@layout/fragment_recipes" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="edu.ucsb.cs.cs184.tablecloth.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        android:id="@+id/nav_ingredients"
+        android:name="edu.ucsb.cs.cs184.tablecloth.ui.about.ToolsFragment"
+        android:label="@string/menu_search_ingredients"
+        tools:layout="@layout/fragment_search_ingredients" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="edu.ucsb.cs.cs184.tablecloth.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        android:id="@+id/nav_about"
+        android:name="edu.ucsb.cs.cs184.tablecloth.ui.about.ToolsFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_search_ingredients" />
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="edu.ucsb.cs.cs184.tablecloth.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
 </navigation>

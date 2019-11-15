@@ -1,4 +1,4 @@
-package edu.ucsb.cs.cs184.tablecloth.ui.tools;
+package edu.ucsb.cs.cs184.tablecloth.ui.about;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,7 +10,7 @@ public class ToolsViewModel extends ViewModel {
 
     public ToolsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is tools fragment");
+        mText.setValue("This is about fragment");
     }
 
     public LiveData<String> getText() {

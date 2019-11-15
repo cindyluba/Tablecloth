@@ -1,4 +1,4 @@
-package edu.ucsb.cs.cs184.tablecloth.ui.send;
+package edu.ucsb.cs.cs184.tablecloth.ui.about;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import edu.ucsb.cs.cs184.tablecloth.R;
 
-public class SendFragment extends Fragment {
+public class ToolsFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    private ToolsViewModel toolsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+        toolsViewModel =
+                ViewModelProviders.of(this).get(ToolsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_search_ingredients, container, false);
+        final TextView textView = root.findViewById(R.id.text_tools);
+        toolsViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
