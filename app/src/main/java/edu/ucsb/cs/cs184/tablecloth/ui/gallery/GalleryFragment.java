@@ -5,7 +5,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -13,7 +17,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
+import java.util.Set;
 
 import edu.ucsb.cs.cs184.tablecloth.R;
 
@@ -23,6 +29,7 @@ public class GalleryFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
     public HashMap<String, Integer> fridge = new HashMap<>();
+    public ArrayAdapter spinner_adapter;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -59,7 +66,31 @@ public class GalleryFragment extends Fragment {
                     outView.setText(text_input);
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
+                    spinner_adapter.add(input);
+                    spinner_adapter.notifyDataSetChanged();
                 }
+
+            }
+        });
+
+
+
+        Spinner spin = getActivity().findViewById(R.id.fridge_spinner);
+        Set<String> temp = fridge.keySet();
+        final String[] fridge_input = temp.toArray(new String[fridge.size()]);
+        spinner_adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,fridge_input);
+        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spin.setAdapter(spinner_adapter);
+
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getActivity(), fridge_input[i], Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
