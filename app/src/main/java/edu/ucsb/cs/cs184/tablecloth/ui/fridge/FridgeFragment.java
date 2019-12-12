@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -21,13 +22,9 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 import edu.ucsb.cs.cs184.tablecloth.FirebaseHelper;
 import edu.ucsb.cs.cs184.tablecloth.R;
@@ -44,12 +41,6 @@ public class FridgeFragment extends Fragment {
     public Spinner spin;
     public DatabaseReference mDatabase;
 
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        FirebaseHelper.Initialize(getActivity());
-//    }
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         galleryViewModel =
@@ -57,6 +48,7 @@ public class FridgeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_fridge, container, false);
         return root;
     }
+
     @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
@@ -116,7 +108,8 @@ public class FridgeFragment extends Fragment {
 
                     mDatabase.child(input).setValue(count);
                     String text_input = "Input Ingredient";
-                    outView.setText(text_input);
+                    outView.setHint(text_input);
+                    outView.setText("");
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
                     //adapter.add(input);
@@ -124,7 +117,8 @@ public class FridgeFragment extends Fragment {
                 else{
                     fridge.put(input,1);
                     String text_input = "Input ingredient";
-                    //outView.setText(text_input);
+                    outView.setHint(text_input);
+                    outView.setText("");
                     mDatabase.child(input).setValue(1);
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
@@ -135,29 +129,29 @@ public class FridgeFragment extends Fragment {
         });
 
 
-            spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    String selectedText = String.valueOf(spin.getSelectedItem());
-                    String toast_text;
-                    int count = fridge.get(selectedText);
-                    if(count == 1){
-                        toast_text = "You have " + count + " " + selectedText + " in the fridge.";
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedText = String.valueOf(spin.getSelectedItem());
+                String toast_text;
+                int count = fridge.get(selectedText);
+                if(count == 1){
+                    toast_text = "You have " + count + " " + selectedText + " in the fridge.";
 
-
-                    }
-                    else{
-                        toast_text = "You have " + count + " " + selectedText + "s" + " in the fridge.";
-                    }
-
-                    Toast.makeText(getActivity(), toast_text, Toast.LENGTH_LONG).show();
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
 
                 }
-            });
+                else{
+                    toast_text = "You have " + count + " " + selectedText + "s" + " in the fridge.";
+                }
+
+                Toast.makeText(getActivity(), toast_text, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
 }
