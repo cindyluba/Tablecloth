@@ -12,16 +12,24 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
+import edu.ucsb.cs.cs184.tablecloth.FirebaseHelper;
 import edu.ucsb.cs.cs184.tablecloth.R;
 
 
@@ -31,9 +39,16 @@ public class FridgeFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
     public HashMap<String, Integer> fridge = new HashMap<>();
+    public HashMap<String, Integer> fridge2 = new HashMap<>();
     public ArrayAdapter adapter;
     public Spinner spin;
+    public DatabaseReference mDatabase;
 
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        FirebaseHelper.Initialize(getActivity());
+//    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,10 +61,45 @@ public class FridgeFragment extends Fragment {
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
 
+        FirebaseHelper.Initialize(getActivity());
+
         adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>());
         spin = getActivity().findViewById(R.id.fridge_spinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin.setAdapter(adapter);
+
+        mDatabase = FirebaseHelper.db.getReference();
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                Log.d("TAG", "KEY: "+ dataSnapshot.getKey() + ", COUNT: " + dataSnapshot.getValue() );
+                String count = dataSnapshot.getValue().toString();
+                fridge.put(dataSnapshot.getKey(), Integer.parseInt(count));
+                adapter.add(dataSnapshot.getKey());
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         FloatingActionButton fab = getActivity().findViewById(R.id.fab);
         // set the icon to a speaker (needs to be in resources-->drawable):
@@ -63,7 +113,9 @@ public class FridgeFragment extends Fragment {
                     int count = fridge.get(input);
                     count++;
                     fridge.put(input, count);
-                    String text_input = "Input ingredient";
+
+                    mDatabase.child(input).setValue(count);
+                    String text_input = "Input Ingredient";
                     outView.setText(text_input);
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
@@ -73,6 +125,7 @@ public class FridgeFragment extends Fragment {
                     fridge.put(input,1);
                     String text_input = "Input ingredient";
                     //outView.setText(text_input);
+                    mDatabase.child(input).setValue(1);
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
                     adapter.add(input);
@@ -90,6 +143,8 @@ public class FridgeFragment extends Fragment {
                     int count = fridge.get(selectedText);
                     if(count == 1){
                         toast_text = "You have " + count + " " + selectedText + " in the fridge.";
+
+
                     }
                     else{
                         toast_text = "You have " + count + " " + selectedText + "s" + " in the fridge.";
@@ -104,4 +159,5 @@ public class FridgeFragment extends Fragment {
                 }
             });
     }
+
 }

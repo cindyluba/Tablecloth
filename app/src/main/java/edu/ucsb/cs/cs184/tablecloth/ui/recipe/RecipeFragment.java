@@ -13,14 +13,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -29,6 +35,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import edu.ucsb.cs.cs184.tablecloth.Constants;
+import edu.ucsb.cs.cs184.tablecloth.FirebaseHelper;
 import edu.ucsb.cs.cs184.tablecloth.R;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -52,6 +59,8 @@ public class RecipeFragment extends Fragment {
     private TextView tvBig;
     private LinearLayout ll2;
     private FloatingActionButton fab;
+    public DatabaseReference mDatabase;
+    private ArrayList<String> ingredients;
 
     class TextImg{
 
@@ -114,11 +123,60 @@ public class RecipeFragment extends Fragment {
     public void onActivityCreated(Bundle state){
         super.onActivityCreated(state);
 
+        ingredients = new ArrayList();
+
+        FirebaseHelper.Initialize(getActivity());
+
+        mDatabase = FirebaseHelper.db.getReference();
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                Log.d("TAG", "KEY: "+ dataSnapshot.getKey() + ", COUNT: " + dataSnapshot.getValue() );
+                String count = dataSnapshot.getValue().toString();
+                ingredients.add(dataSnapshot.getKey());
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
+
+    public String stringify(ArrayList<String> ingredients) {
+
+//      String s = "&ingredients=eggs,+flour,+sugar";
+        String s = "&ingredients=";
+
+        s += ingredients.get(0);
+        for(int i = 1; i < ingredients.size(); i++){
+            s += (",+" + ingredients.get(i));
+        }
+        return s;
+    }
+
     public void submitQuery(){
 
-        String url = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" + Constants.API_TOKEN + "&ingredients=eggs,+flour,+sugar& &ranking=1";
+        String ingre = stringify(ingredients);
+        String url = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" + Constants.API_TOKEN + ingre + "&ranking=1";
         Log.d("URL: ", url);
         Request request = new Request.Builder()
                 .url(url)

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "617626104955",
+    "firebase_url": "https://tablecloth-23038.firebaseio.com",
+    "project_id": "tablecloth-23038",
+    "storage_bucket": "tablecloth-23038.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617626104955:android:365dea6e94374b4235dede",
+        "android_client_info": {
+          "package_name": "edu.ucsb.cs.cs184.tablecloth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617626104955-5kcq91bnrepk384rnrvsk90t7bb7igl6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.ucsb.cs.cs184.tablecloth",
+            "certificate_hash": "2fd166c7a136dd690b1ae14d8be240ce8db158d6"
+          }
+        },
+        {
+          "client_id": "617626104955-p1br7g7h6ps4ijdl10ps7fsm7cqbdb4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDefyYQGisrVb0nfR9ViPPbZjSkRwKgVC8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617626104955-p1br7g7h6ps4ijdl10ps7fsm7cqbdb4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
