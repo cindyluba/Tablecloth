@@ -29,7 +29,6 @@ public class PunFragment extends Fragment implements View.OnClickListener {
 
     private PunViewModel punViewModel;
     private View root;
-    jsoup soup;
     private String html;
     ArrayList<String> puns;
     int rand1;
