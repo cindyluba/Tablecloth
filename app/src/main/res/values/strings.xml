@@ -16,7 +16,7 @@
         Welcome to TableCloth.\n\nOur audience is anyone that cooks or wants to cook. We also have a portion of our app that is tailored towards college kids as sometimes we don’t have time to figure out what we want to make.\n\nThe fridge database solves this issue as we can auto-find recipes based on what we currently have. If someone wants to know a recipe for a food that they find interesting, they can take a picture of it and then they have the recipe for future reference.</string>
     <string name="ajit_text">I am Ajit</string>
     <string name="cindy_text">I am Cindy</string>
-    <string name="wesley_text">I am Wesley</string>
+    <string name="wesley_text">Wesley is a currently a 4th year Computer Science major at UCSB. In his free time he likes to cook using recipes found from Tablecloth.</string>
     <string name="shu_text">I am Shu</string>
 
 </resources>
