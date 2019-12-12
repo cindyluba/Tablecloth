@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/about_bg"
+    android:backgroundTint="#99FFFFFF"
+    android:backgroundTintMode="src_over">
 
 
     <EditText
@@ -12,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:inputType="textMultiLine"
-        android:text="Hello Text to Speech Fragment"
+        android:hint="Enter food item here"
+        android:fontFamily="@font/extra_hot"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -52,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Here's what is in your fridge!"
+        android:fontFamily="@font/extra_hot"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"

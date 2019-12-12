@@ -72,7 +72,7 @@ public class FridgeFragment extends Fragment {
                 else{
                     fridge.put(input,1);
                     String text_input = "Input ingredient";
-                    outView.setText(text_input);
+                    //outView.setText(text_input);
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
                     adapter.add(input);
