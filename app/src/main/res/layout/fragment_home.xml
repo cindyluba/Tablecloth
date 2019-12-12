@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/red_velvet">
+    android:background="@drawable/about_bg">
 
     <TextView
         android:id="@+id/text_home"
@@ -25,8 +25,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/extra_hot"
         android:text="Tablecloth"
-        android:textColor="@android:color/white"
-        android:textSize="40dp"
+        android:textColor="@android:color/black"
+        android:textSize="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -39,9 +39,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/extra_hot"
         android:text="Cook At Home!"
-        android:textColor="@android:color/white"
-        android:textSize="15dp"
+        android:textColor="@android:color/black"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
