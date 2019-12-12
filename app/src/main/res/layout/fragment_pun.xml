@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/about_bg"
+    android:backgroundTint="#99FFFFFF"
+    android:backgroundTintMode="src_over">
+
+
+    <TextView
+        android:id="@+id/textViewPun"
+        android:layout_width="287dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="128dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:fontFamily="@font/extra_hot"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonPun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Click Me for a Pun!"
+        android:fontFamily="@font/extra_hot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPun" />
+</androidx.constraintlayout.widget.ConstraintLayout>

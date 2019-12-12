@@ -24,10 +24,10 @@
         tools:layout="@layout/fragment_recipes" />
 
     <fragment
-        android:id="@+id/nav_ingredients"
-        android:name="edu.ucsb.cs.cs184.tablecloth.ui.about.AboutFragment"
-        android:label="@string/menu_search_ingredients"
-        tools:layout="@layout/fragment_search_ingredients" />
+        android:id="@+id/nav_pun"
+        android:name="edu.ucsb.cs.cs184.tablecloth.ui.pun.PunFragment"
+        android:label="@string/menu_pun"
+        tools:layout="@layout/fragment_pun" />
 
     <fragment
         android:id="@+id/nav_about"

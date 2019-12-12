@@ -10,7 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_fridge">Fridge</string>
     <string name="menu_recipes">Recipes</string>
-    <string name="menu_search_ingredients">Search Ingredients</string>
+    <string name="menu_pun">Food Puns</string>
     <string name="menu_about">About</string>
     <string name="about_us">
         Welcome to TableCloth.\n\nOur audience is anyone that cooks or wants to cook. We also have a portion of our app that is tailored towards college kids as sometimes we don’t have time to figure out what we want to make.\n\nThe fridge database solves this issue as we can auto-find recipes based on what we currently have. If someone wants to know a recipe for a food that they find interesting, they can take a picture of it and then they have the recipe for future reference.</string>

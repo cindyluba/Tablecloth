@@ -26,6 +26,8 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.TextView;
 
+//import edu.ucsb.cs.cs184.tablecloth.ui.pun.content;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,12 +53,14 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_fridge, R.id.nav_recipes,
-                R.id.nav_ingredients, R.id.nav_about)
+                R.id.nav_pun, R.id.nav_about)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+//        content cont = new content();
 
         //Constants.API_TOKEN;
 

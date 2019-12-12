@@ -17,9 +17,9 @@
             android:icon="@drawable/ic_recipes"
             android:title="@string/menu_recipes" />
         <item
-            android:id="@+id/nav_ingredients"
-            android:icon="@drawable/ic_search_ingredients"
-            android:title="@string/menu_search_ingredients" />
+            android:id="@+id/nav_pun"
+            android:icon="@drawable/ic_tag_faces_black_24dp"
+            android:title="@string/menu_pun"/>
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_about"
