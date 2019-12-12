@@ -1,4 +1,4 @@
-package edu.ucsb.cs.cs184.tablecloth.ui.gallery;
+package edu.ucsb.cs.cs184.tablecloth.ui.fridge;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -1,14 +1,14 @@
-package edu.ucsb.cs.cs184.tablecloth.ui.slideshow;
+package edu.ucsb.cs.cs184.tablecloth.ui.recipe;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class RecipeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public RecipeViewModel() {
         mText = new MutableLiveData<>();
 
     }

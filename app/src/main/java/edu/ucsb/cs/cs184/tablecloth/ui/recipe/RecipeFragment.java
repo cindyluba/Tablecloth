@@ -1,19 +1,15 @@
-package edu.ucsb.cs.cs184.tablecloth.ui.slideshow;
+package edu.ucsb.cs.cs184.tablecloth.ui.recipe;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,9 +36,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class SlideshowFragment extends Fragment {
+public class RecipeFragment extends Fragment {
 
-    private SlideshowViewModel slideshowViewModel;
+    private RecipeViewModel recipeViewModel;
 
     private View root;
     private JSONArray recipes;
@@ -73,11 +69,11 @@ public class SlideshowFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        slideshowViewModel =
-                ViewModelProviders.of(this).get(SlideshowViewModel.class);
+        recipeViewModel =
+                ViewModelProviders.of(this).get(RecipeViewModel.class);
         root = inflater.inflate(R.layout.fragment_recipes, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
-        slideshowViewModel.getText().observe(this, new Observer<String>() {
+        recipeViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

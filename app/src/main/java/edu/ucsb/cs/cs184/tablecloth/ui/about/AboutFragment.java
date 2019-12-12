@@ -1,4 +1,4 @@
-package edu.ucsb.cs.cs184.tablecloth.ui.share;
+package edu.ucsb.cs.cs184.tablecloth.ui.about;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,22 +14,22 @@ import androidx.lifecycle.ViewModelProviders;
 
 import edu.ucsb.cs.cs184.tablecloth.R;
 
-public class ShareFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
-    private ShareViewModel shareViewModel;
+    private AboutViewModel aboutViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
+        aboutViewModel =
+                ViewModelProviders.of(this).get(AboutViewModel.class);
         View root = inflater.inflate(R.layout.fragment_about, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+//        final TextView textView = root.findViewById(R.id.text_about);
+//        aboutViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
         return root;
     }
 }

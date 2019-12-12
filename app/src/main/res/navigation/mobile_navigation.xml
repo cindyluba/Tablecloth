@@ -13,26 +13,26 @@
 
     <fragment
         android:id="@+id/nav_fridge"
-        android:name="edu.ucsb.cs.cs184.tablecloth.ui.gallery.GalleryFragment"
+        android:name="edu.ucsb.cs.cs184.tablecloth.ui.fridge.FridgeFragment"
         android:label="@string/menu_fridge"
         tools:layout="@layout/fragment_fridge" />
 
     <fragment
         android:id="@+id/nav_recipes"
-        android:name="edu.ucsb.cs.cs184.tablecloth.ui.slideshow.SlideshowFragment"
+        android:name="edu.ucsb.cs.cs184.tablecloth.ui.recipe.RecipeFragment"
         android:label="@string/menu_recipes"
         tools:layout="@layout/fragment_recipes" />
 
     <fragment
         android:id="@+id/nav_ingredients"
-        android:name="edu.ucsb.cs.cs184.tablecloth.ui.about.ToolsFragment"
+        android:name="edu.ucsb.cs.cs184.tablecloth.ui.about.AboutFragment"
         android:label="@string/menu_search_ingredients"
         tools:layout="@layout/fragment_search_ingredients" />
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="edu.ucsb.cs.cs184.tablecloth.ui.about.ToolsFragment"
+        android:name="edu.ucsb.cs.cs184.tablecloth.ui.about.AboutFragment"
         android:label="@string/menu_about"
-        tools:layout="@layout/fragment_search_ingredients" />
+        tools:layout="@layout/fragment_about" />
 
 </navigation>
