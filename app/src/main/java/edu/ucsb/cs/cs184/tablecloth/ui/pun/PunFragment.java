@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -48,6 +50,9 @@ public class PunFragment extends Fragment implements View.OnClickListener {
 
         downloadThread.start();
         btn.setOnClickListener(this);
+
+        FloatingActionButton fab = getActivity().findViewById(R.id.fab);
+        fab.hide();
 
         return root;
     }

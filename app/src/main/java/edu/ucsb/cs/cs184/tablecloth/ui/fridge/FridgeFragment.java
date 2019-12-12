@@ -69,6 +69,7 @@ public class FridgeFragment extends Fragment {
                 String count = dataSnapshot.getValue().toString();
                 fridge.put(dataSnapshot.getKey(), Integer.parseInt(count));
                 adapter.add(dataSnapshot.getKey());
+
             }
 
             @Override
@@ -112,7 +113,6 @@ public class FridgeFragment extends Fragment {
                     outView.setText("");
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
-                    //adapter.add(input);
                 }
                 else{
                     fridge.put(input,1);
@@ -122,7 +122,6 @@ public class FridgeFragment extends Fragment {
                     mDatabase.child(input).setValue(1);
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
-                    adapter.add(input);
                 }
 
             }
