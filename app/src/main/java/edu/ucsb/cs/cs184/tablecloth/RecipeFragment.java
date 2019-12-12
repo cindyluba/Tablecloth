@@ -29,12 +29,22 @@ import okhttp3.Response;
 
 public class RecipeFragment extends Fragment {
     private JSONArray recipes;
+    private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
-        View rootView = inflater.inflate(R.layout.fragment_recipes, parent, false);
+        rootView = inflater.inflate(R.layout.fragment_recipes, parent, false);
         Button b = (Button) rootView.findViewById(R.id.generateButton);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               submitQuery();
+                TextView textHello = (TextView) rootView.findViewById(R.id.text_slideshow);
+
+            }
+
+        });
 
         return rootView;
     }
