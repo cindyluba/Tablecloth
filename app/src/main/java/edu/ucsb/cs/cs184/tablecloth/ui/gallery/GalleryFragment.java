@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -29,7 +30,8 @@ public class GalleryFragment extends Fragment {
 
     private GalleryViewModel galleryViewModel;
     public HashMap<String, Integer> fridge = new HashMap<>();
-    public ArrayAdapter spinner_adapter;
+    public ArrayAdapter adapter;
+    public Spinner spin;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -42,6 +44,11 @@ public class GalleryFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle state) {
         super.onActivityCreated(state);
+
+        adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, new ArrayList<String>());
+        spin = getActivity().findViewById(R.id.fridge_spinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapter);
 
         FloatingActionButton fab = getActivity().findViewById(R.id.fab);
         // set the icon to a speaker (needs to be in resources-->drawable):
@@ -59,6 +66,7 @@ public class GalleryFragment extends Fragment {
                     outView.setText(text_input);
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
+                    //adapter.add(input);
                 }
                 else{
                     fridge.put(input,1);
@@ -66,8 +74,7 @@ public class GalleryFragment extends Fragment {
                     outView.setText(text_input);
                     String mapper = fridge.toString();
                     Log.d(TAG, mapper);
-                    spinner_adapter.add(input);
-                    spinner_adapter.notifyDataSetChanged();
+                    adapter.add(input);
                 }
 
             }
@@ -75,24 +82,27 @@ public class GalleryFragment extends Fragment {
 
 
 
-        Spinner spin = getActivity().findViewById(R.id.fridge_spinner);
-        Set<String> temp = fridge.keySet();
-        final String[] fridge_input = temp.toArray(new String[fridge.size()]);
-        spinner_adapter = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,fridge_input);
-        spinner_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spin.setAdapter(spinner_adapter);
+            spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    String selectedText = String.valueOf(spin.getSelectedItem());
+                    String toast_text;
+                    int count = fridge.get(selectedText);
+                    if(count == 1){
+                        toast_text = "You have " + count + " " + selectedText + " in the fridge.";
+                    }
+                    else{
+                        toast_text = "You have " + count + " " + selectedText + "s" + " in the fridge.";
+                    }
 
-        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity(), fridge_input[i], Toast.LENGTH_LONG).show();
-            }
+                    Toast.makeText(getActivity(), toast_text, Toast.LENGTH_LONG).show();
+                }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
+                }
+            });
     }
 }
